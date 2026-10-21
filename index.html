@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b18">
+  <meta name="description" content="A peaceful place to listen to Quran recitations.">
+  <title>Tilawah — Listen to the Quran</title>
+  <link rel="preconnect" href="https://everyayah.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Tilawah home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3.5 14.2 9.8 20.5 12l-6.3 2.2L12 20.5l-2.2-6.3L3.5 12l6.3-2.2L12 3.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.25"/></svg>
+        </span>
+        <span><span class="brand-name">TILAWAH</span><span class="brand-caption">A MOMENT OF STILLNESS</span></span>
+      </a>
+      <div class="top-note"><span aria-hidden="true">✦</span> Listen. Reflect. Return.</div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow">Your quiet place</div>
+        <h1 id="page-title">Let the words find you.</h1>
+        <p>Take a breath, choose a recitation, and spend a moment with the words of the Quran.</p>
+      </section>
+
+      <section class="feature" aria-label="Featured recitation">
+        <div class="feature-copy">
+          <div class="eyebrow">A good place to begin</div>
+          <h2>Surah Al-Fatihah</h2>
+          <div class="feature-subtitle">The Opening · The first chapter of the Quran</div>
+          <div class="feature-meta"><span>7 verses</span><span class="meta-dot"></span><span>Meccan</span></div>
+          <button class="feature-play" id="featuredPlay" type="button">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.4c0-.6.65-.96 1.15-.64l6.3 4.1a.77.77 0 0 1 0 1.28l-6.3 4.1A.77.77 0 0 1 5 11.6V3.4Z"/></svg>
+            Listen to Al-Fatihah
+          </button>
+        </div>
+        <div class="ornament" aria-hidden="true">۞</div>
+      </section>
+
+      <section aria-labelledby="library-title">
+        <div class="library-heading">
+          <div>
+            <h2 id="library-title">Explore the Quran</h2>
+            <p id="result-count">Choose a surah to begin listening</p>
+          </div>
+          <div class="tools">
+            <label class="search-wrap">
+              <span class="sr-only">Search surahs</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13.2 13.2 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <input class="search" id="search" type="search" placeholder="Search surahs..." autocomplete="off">
+            </label>
+            <label>
+              <span class="sr-only">Filter surahs</span>
+              <select class="filter-select" id="filter">
+                <option value="all">All surahs</option>
+                <option value="favorites">Favorites</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="surah-list" id="surahList" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="player" aria-label="Audio player">
+    <div class="player-inner">
+      <div class="now-playing">
+        <div class="cover" aria-hidden="true">۞</div>
+        <div class="now-text">
+          <div class="now-title" id="nowTitle">Surah Al-Fatihah</div>
+          <div class="now-reciter" id="nowReciter">Mishary Rashid Alafasy · Full surah</div>
+        </div>
+      </div>
+      <div class="player-center">
+        <div class="controls">
+          <button class="icon-button transport" id="previous" type="button" aria-label="Previous surah" title="Previous surah">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5 4h1.6v12H5zM15.5 4.5v11l-8-5.5 8-5.5Z"/></svg>
+          </button>
+          <button class="play-main" id="playPause" type="button" aria-label="Play">
+            <svg id="playIcon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5c0-.7.76-1.12 1.35-.74l8.1 5.15a1.28 1.28 0 0 1 0 2.18l-8.1 5.15A.87.87 0 0 1 6 15.5v-11Z"/></svg>
+          </button>
+          <button class="icon-button transport" id="next" type="button" aria-label="Next surah" title="Next surah">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M13.4 4H15v12h-1.6zM4.5 4.5v11l8-5.5-8-5.5Z"/></svg>
+          </button>
+        </div>
+        <div class="progress-row">
+          <span id="elapsed">0:00</span>
+          <label class="sr-only" for="progress">Audio progress</label>
+          <input class="progress" id="progress" type="range" min="0" max="100" value="0">
+          <span id="duration">0:00</span>
+        </div>
+        <div class="status" id="status" role="status" aria-live="polite">Ready when you are</div>
+      </div>
+      <div class="player-right">
+        <label>
+          <span class="sr-only">Choose reciter</span>
+          <select class="reciter-select" id="reciter">
+            <option value="Alafasy_128kbps">Mishary Alafasy</option>
+            <option value="Abdul_Basit_Murattal_192kbps">Abdul Basit</option>
+            <option value="Husary_128kbps">Mahmoud Khalil Al-Husary</option>
+          </select>
+        </label>
+        <svg class="volume-icon" width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 8v4h3l4 3V5L6 8H3Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13 7a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <label>
+          <span class="sr-only">Volume</span>
+          <input class="volume" id="volume" type="range" min="0" max="1" step="0.01" value="0.8">
+        </label>
+      </div>
+    </div>
+  </footer>
+
+  <audio id="audio" preload="metadata"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
